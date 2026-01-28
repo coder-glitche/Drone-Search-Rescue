@@ -1094,7 +1094,7 @@ ID,Image File,Image Path,Cropped Image,Object Type,Color,Letter,Coordinates_x,Co
 │ Object Classification     │  150   │   128      │
 │ Geolocation Accuracy      │  150   │   137      │
 │ Actionable Intelligence   │  100   │    95      │
-│ Payload Drop             │  100   │   100      │
+│ Payload Drop              │  100   │   100      │
 │ Technical Design Report   │  250   │   245 ⭐   │
 ├───────────────────────────┼────────┼────────────┤
 │ TOTAL                     │ 1000   │   947      │
@@ -1121,8 +1121,8 @@ Advancing aerial robotics through innovation in AI, computer vision, and autonom
 
 | Member | Role | Expertise |
 |--------|------|-----------|
-| **[Yogesh D]** | AI/ML Lead | Deep Learning, Computer Vision, GPU Optimization |
-| **[Nandeesha H K]** | Systems Engineer | MAVLink, Autopilot Integration |
+| **Yogesh D** | AI/ML Lead | Deep Learning, Computer Vision, GPU Optimization |
+| **Nandeesha H K** | Systems Engineer | MAVLink, Autopilot Integration |
 
 ### Technical Contributions
 

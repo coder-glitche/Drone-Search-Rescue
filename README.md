@@ -1,4 +1,4 @@
-# AutoCam AI - Autonomous Search & Rescue Drone System
+# Autonomous Search & Rescue Drone System
 
 > **🏆 Winner: Best Technical Design Award - SUAS 2024 Competition**
 
@@ -54,7 +54,7 @@ Autonomously detect and classify ground targets (shapes, colors, alphanumeric ch
 
 ### **🥇 Best Technical Design Award - SUAS 2024**
 
-Our team won the **Best Technical Design** category at the prestigious **Student Unmanned Aerial Systems Competition 2024**, competing against 50+ international teams.
+Our team won the **Best Technical Design** category at the prestigious **Student Unmanned Aerial Systems Competition 2024**, competing against 60+ international teams.
 
 **Competition Highlights:**
 - **Detection Accuracy**: 95%+ target recognition rate
@@ -75,44 +75,35 @@ Our team won the **Best Technical Design** category at the prestigious **Student
 <table>
   <tr>
     <td width="33%">
-      <img src="docs/images/drone-flight.jpg" alt="Drone in Flight" width="100%"/>
-      <p align="center"><b>Autonomous Flight</b><br/>Drone executing search pattern</p>
+      <img src="docs/images/1.png" width="100%"/>
     </td>
     <td width="33%">
-      <img src="docs/images/target-detection.jpg" alt="Target Detection" width="100%"/>
-      <p align="center"><b>Real-Time Detection</b><br/>YOLOv8 identifying ground targets</p>
+      <img src="docs/images/2.png" width="100%"/>
     </td>
     <td width="33%">
-      <img src="docs/images/jetson-setup.jpg" alt="Jetson Nano Setup" width="100%"/>
-      <p align="center"><b>Edge Computing</b><br/>Jetson Nano onboard processing</p>
+      <img src="docs/images/3.png" width="100%"/>
     </td>
   </tr>
   <tr>
     <td width="33%">
-      <img src="docs/images/classification.jpg" alt="Classification Pipeline" width="100%"/>
-      <p align="center"><b>Multi-Stage Pipeline</b><br/>Shape, color, and OCR classification</p>
+      <img src="docs/images/4.png" width="100%"/>
     </td>
     <td width="33%">
-      <img src="docs/images/geotagging.jpg" alt="Geotagging" width="100%"/>
-      <p align="center"><b>GPS Geotagging</b><br/>Precision target localization</p>
+      <img src="docs/images/5.png" width="100%"/>
     </td>
     <td width="33%">
-      <img src="docs/images/payload-drop.jpg" alt="Payload Drop" width="100%"/>
-      <p align="center"><b>Autonomous Drop</b><br/>Precision payload delivery</p>
+      <img src="docs/images/6.png" width="100%"/>
     </td>
   </tr>
   <tr>
     <td width="33%">
-      <img src="docs/images/camera-system.jpg" alt="IMX477 Camera" width="100%"/>
-      <p align="center"><b>IMX477 Camera</b><br/>12MP high-resolution imaging</p>
+      <img src="docs/images/7.png" width="100%"/>
     </td>
     <td width="33%">
-      <img src="docs/images/team-integration.jpg" alt="System Integration" width="100%"/>
-      <p align="center"><b>System Integration</b><br/>Complete hardware-software stack</p>
+      <img src="docs/images/8.png" width="100%"/>
     </td>
     <td width="33%">
-      <img src="docs/images/competition.jpg" alt="SUAS Competition" width="100%"/>
-      <p align="center"><b>SUAS 2024</b><br/>Competition day setup</p>
+      <img src="docs/images/9.png" width="100%"/>
     </td>
   </tr>
 </table>
@@ -264,61 +255,61 @@ Raw Image (4056x3040)
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                         DRONE PLATFORM                            │
-│  ┌────────────┐  ┌─────────────┐  ┌───────────────────────┐     │
-│  │  Pixhawk   │  │  IMX477     │  │   Jetson Nano 4GB     │     │
-│  │  Autopilot │◄─┤   Camera    │◄─┤   (CUDA 11.4)         │     │
-│  │  (MAVLink) │  │  12MP CSI   │  │   TensorRT 8.0        │     │
-│  └────────────┘  └─────────────┘  └───────────────────────┘     │
-│         ▲              ▲                      │                   │
-│         │              │                      │                   │
-│         │              └──────────────────────┘                   │
-│         │                   Image Stream                          │
-│         │                                                          │
-│         │              ┌───────────────────────────┐              │
-│         └──────────────┤   GPS/Telemetry Data      │              │
-│                        │   (Lat, Lon, Alt, Yaw)    │              │
-│                        └───────────────────────────┘              │
+│                         DRONE PLATFORM                           │
+│  ┌────────────┐  ┌─────────────┐  ┌───────────────────────┐      │
+│  │  Pixhawk   │  │  IMX477     │  │   Jetson Nano 4GB     │      │
+│  │  Autopilot │◄─┤   Camera    │◄─┤   (CUDA 11.4)         │      │
+│  │  (MAVLink) │  │  12MP CSI   │  │   TensorRT 8.0        │      │
+│  └────────────┘  └─────────────┘  └───────────────────────┘      │
+│         ▲              ▲                      │                  │
+│         │              │                      │                  │
+│         │              └──────────────────────┘                  │
+│         │                   Image Stream                         │
+│         │                                                        │
+│         │              ┌───────────────────────────┐             │
+│         └──────────────┤   GPS/Telemetry Data      │             │
+│                        │   (Lat, Lon, Alt, Yaw)    │             │
+│                        └───────────────────────────┘             │
 └──────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│                    AI PROCESSING PIPELINE                         │
+│                    AI PROCESSING PIPELINE                        │
 │  ┌───────────────────────────────────────────────────────────┐   │
-│  │               Image Acquisition & Preprocessing            │   │
+│  │               Image Acquisition & Preprocessing           │   │
 │  │  • Capture @ 30 FPS        • Debayering (RAW→RGB)         │   │
 │  │  • Resize 4056x3040→640x640  • Normalization              │   │
 │  └────────────────────┬──────────────────────────────────────┘   │
-│                       ▼                                           │
+│                       ▼                                          │
 │  ┌───────────────────────────────────────────────────────────┐   │
 │  │          Stage 1: Object Detection (YOLOv8-Detect)        │   │
 │  │  • Input: 640x640 RGB      • Output: Bounding Boxes       │   │
 │  │  • Inference: 65ms         • Confidence: >0.6             │   │
 │  │  • GPU Acceleration        • NMS: IoU=0.45                │   │
 │  └────────────────────┬──────────────────────────────────────┘   │
-│                       ▼                                           │
+│                       ▼                                          │
 │  ┌───────────────────────────────────────────────────────────┐   │
 │  │       Stage 2: Color Classification (YOLOv8-Classify)     │   │
 │  │  • Input: Cropped ROI      • Classes: 8 colors            │   │
 │  │  • Inference: 15ms         • K-Means Verification         │   │
 │  │  • Top-2 Accuracy          • Dominant Color Selection     │   │
 │  └────────────────────┬──────────────────────────────────────┘   │
-│                       ▼                                           │
+│                       ▼                                          │
 │  ┌───────────────────────────────────────────────────────────┐   │
 │  │         Stage 3: OCR Recognition (Tesseract)              │   │
 │  │  • Preprocessing: Grayscale, Threshold, Denoise           │   │
-│  │  • OCR Engine: Tesseract 4.0  • Char Set: A-Z, 0-9       │   │
+│  │  • OCR Engine: Tesseract 4.0  • Char Set: A-Z, 0-9        │   │
 │  │  • Confidence: >70%           • Post-processing           │   │
 │  └────────────────────┬──────────────────────────────────────┘   │
-│                       ▼                                           │
+│                       ▼                                          │
 │  ┌───────────────────────────────────────────────────────────┐   │
 │  │              Geotagging & Data Association                │   │
 │  │  • GPS Synchronization (MAVLink)                          │   │
 │  │  • Pixel→GPS Coordinate Transform                         │   │
 │  │  • Target Matching Algorithm                              │   │
-│  │  • CSV Export (ID, Shape, Color, Letter, Lat, Lon)       │   │
+│  │  • CSV Export (ID, Shape, Color, Letter, Lat, Lon)        │   │
 │  └────────────────────┬──────────────────────────────────────┘   │
-│                       ▼                                           │
+│                       ▼                                          │
 │  ┌───────────────────────────────────────────────────────────┐   │
 │  │            Autonomous Decision & Control                  │   │
 │  │  • Target Priority Ranking                                │   │
@@ -330,7 +321,7 @@ Raw Image (4056x3040)
                               │
                               ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│                         OUTPUT & LOGGING                          │
+│                         OUTPUT & LOGGING                         │
 │  • Detection Results CSV    • Cropped Target Images              │
 │  • Mission Logs             • Performance Metrics                │
 │  • Telemetry Data           • Video Recording                    │
@@ -1130,10 +1121,8 @@ Advancing aerial robotics through innovation in AI, computer vision, and autonom
 
 | Member | Role | Expertise |
 |--------|------|-----------|
-| **[Your Name]** | AI/ML Lead | Deep Learning, Computer Vision, GPU Optimization |
-| **[Team Member 2]** | Systems Engineer | MAVLink, Autopilot Integration |
-| **[Team Member 3]** | Hardware Lead | Jetson Nano, Camera Systems |
-| **[Team Member 4]** | Software Engineer | Python, ROS, Data Pipeline |
+| **[Yogesh D]** | AI/ML Lead | Deep Learning, Computer Vision, GPU Optimization |
+| **[Nandeesha H K]** | Systems Engineer | MAVLink, Autopilot Integration |
 
 ### Technical Contributions
 
@@ -1152,65 +1141,6 @@ Advancing aerial robotics through innovation in AI, computer vision, and autonom
 - **Edge AI**: Jetson Nano Optimization, Power Profiling, Real-time Systems
 - **Systems Integration**: MAVLink, ROS, Multi-threading, Data Synchronization
 
-### Club Achievements
-
-- 🥇 **SUAS 2024**: Best Technical Design Award
-- 🥈 **SUAS 2023**: 2nd Place Overall
-- 🏆 **Regional Competition 2023**: 1st Place
-- 📄 **Published Papers**: 2 conference papers on autonomous drones
-- 🎓 **Workshops Conducted**: 15+ sessions on drone AI and computer vision
-
-### Contact & Collaboration
-
-- **Club Website**: [edhitha.org](https://edhitha.org)
-- **GitHub**: [@edhitha-drones](https://github.com/edhitha-drones)
-- **LinkedIn**: [Edhitha Student Drone Club](https://linkedin.com/company/edhitha)
-- **Email**: contact@edhitha.org
-
----
-
-## 🔮 Future Enhancements
-
-### Short-term Roadmap (Q1-Q2 2025)
-
-1. **Model Improvements**
-   - [ ] Increase dataset to 10K+ images
-   - [ ] Experiment with YOLOv9/YOLOv10 architectures
-   - [ ] Implement ensemble models for higher accuracy
-   - [ ] Add rotation-invariant detection
-
-2. **System Optimization**
-   - [ ] Port to Jetson Orin Nano (10x faster)
-   - [ ] Implement INT4 quantization (experimental)
-   - [ ] Reduce end-to-end latency to <100ms
-   - [ ] Add multi-camera support
-
-3. **Features**
-   - [ ] Real-time video streaming to ground station
-   - [ ] 3D object localization (altitude estimation)
-   - [ ] Semantic segmentation for background removal
-   - [ ] Adversarial robustness testing
-
-### Long-term Vision (2025-2026)
-
-4. **Advanced AI**
-   - [ ] Reinforcement learning for adaptive search patterns
-   - [ ] Few-shot learning for novel target types
-   - [ ] Attention mechanisms for occlusion handling
-   - [ ] Multimodal fusion (RGB + thermal imaging)
-
-5. **Autonomy**
-   - [ ] Fully autonomous mission planning
-   - [ ] Dynamic obstacle avoidance (moving objects)
-   - [ ] Collaborative multi-drone search
-   - [ ] Emergency landing site detection
-
-6. **Deployment**
-   - [ ] Real-world search-and-rescue missions
-   - [ ] Disaster response applications
-   - [ ] Wildlife monitoring and conservation
-   - [ ] Agricultural crop health assessment
-
 ### Research Directions
 
 - **Efficient Neural Architectures**: Exploring MobileNet, EfficientNet for even faster edge inference
@@ -1226,13 +1156,11 @@ Advancing aerial robotics through innovation in AI, computer vision, and autonom
 
 We extend our gratitude to:
 
-- **AUVSI SUAS** for organizing the world-class competition
-- **University/Institution** for providing resources and facilities
+- **SUAS** for organizing the world-class competition
+- **Ramaiah Institute of Technology** for providing resources and facilities
 - **Faculty Advisors** for guidance and mentorship
-- **Sponsors** for funding and hardware support:
-  - NVIDIA (Jetson Nano Developer Kit)
-  - Arducam (IMX477 Camera Module)
-  - Holybro (Pixhawk 4 Autopilot)
+- **Sponsors** for funding and support
+
 
 ### Technical Inspiration
 
@@ -1264,13 +1192,11 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ## 📧 Contact
 
 **Project Maintainer:**  
-**[Your Name]**  
+**[Yogesh D]**  
 AI/ML Engineer | Edhitha Student Drone Club  
 
-- 📧 Email: [your.email@example.com](mailto:your.email@example.com)
-- 💼 LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- 🐙 GitHub: [@yourusername](https://github.com/yourusername)
-- 🌐 Portfolio: [yourwebsite.com](https://yourwebsite.com)
+- 📧 Email: [yogeshedigem2409@gmail.com](mailto:yogeshedigem2409@gmail.com)
+- 🐙 GitHub: [@coder-glitche](https://github.com/coder-glitche)
 
 **For collaborations, internships, or technical queries:**  
 Feel free to reach out! Always happy to discuss autonomous systems, computer vision, and edge AI.
@@ -1295,13 +1221,6 @@ If you use this work in your research, please cite:
 
 ---
 
-## ⭐ Star History
-
-If this project inspired you or helped your research, please consider giving it a ⭐!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/autocam-ai-suas2024&type=Date)](https://star-history.com/#yourusername/autocam-ai-suas2024&Date)
-
----
 
 <p align="center">
   <b>🚁 Built with passion for autonomous aerial robotics 🤖</b><br>
@@ -1311,4 +1230,3 @@ If this project inspired you or helped your research, please consider giving it 
 
 ---
 
-**Keywords:** `autonomous-drones` `computer-vision` `deep-learning` `yolov8` `jetson-nano` `cuda-optimization` `tensorrt` `edge-ai` `suas-competition` `search-and-rescue` `object-detection` `image-classification` `ocr` `geotagging` `mavlink` `pytorch` `opencv` `gpu-acceleration`
